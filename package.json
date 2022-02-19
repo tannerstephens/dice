@@ -1,5 +1,5 @@
 {
-  "name": "yarnTemplate",
+  "name": "dice",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -16,8 +16,8 @@
   },
   "dependencies": {},
   "scripts": {
-    "production": "webpack --mode production --config webpack.config.prod.js",
-    "build": "webpack --mode development --config webpack.config.dev.js",
+    "production": "python build-dice-json.py && webpack --mode production --config webpack.config.prod.js",
+    "build": "python build-dice-json.py && webpack --mode development --config webpack.config.dev.js",
     "start": "webpack-dev-server --config webpack.config.dev.js"
   }
 }

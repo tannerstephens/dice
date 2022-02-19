@@ -1,4 +1,4 @@
 module.exports = {
-  title: 'yarnTemplate',
-  repo: ''
+  title: 'Dice',
+  repo: 'https://github.com/tannerstephens/dice'
 };
