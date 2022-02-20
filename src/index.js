@@ -23,11 +23,44 @@ const callback = entries => {
   }
 };
 
+const makeModals = columns => {
+  const parent = columns.parentElement;
+
+  Array.from(columns.children).forEach(column => {
+    const dice = column.dataset.dice;
+
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.id = `modal-${dice}`;
+
+    modal.innerHTML = `
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box">
+          <img data-src="assets/dice/${dice}">
+        </div>
+      </div>
+    `;
+
+    parent.append(modal);
+
+    column.children[0].onclick = () => {
+      modal.children[1].children[0].children[0].src = modal.children[1].children[0].children[0].dataset.src;
+      modal.classList.add('is-active');
+    };
+
+    modal.children[0].onclick = () => {
+      modal.classList.remove('is-active');
+    }
+  });
+};
+
 const makeBoxColumn = dice => {
   const column = document.createElement('div');
   column.classList.add('column');
   column.classList.add('is-one-quarter');
   column.id = `column-${dice}`;
+  column.dataset.dice = dice;
 
   const box = document.createElement('div');
   box.id = `box-${dice}`;
@@ -56,6 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   getDiceList()
     .then(dice => dice.map(dice => makeBoxColumn(dice)))
-    .then(boxes => boxes.forEach(box => columns.append(box)));
-
+    .then(boxes => boxes.forEach(box => columns.append(box)))
+    .then(() => makeModals(columns));
 })
