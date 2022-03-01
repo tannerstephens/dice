@@ -74,7 +74,7 @@ const makeBoxColumn = dice => {
   box.classList.add('box');
   box.classList.add('dice');
 
-  const image = document.createElement('img');
+  const image = new Image();
   image.id = `image-${dice}`;
   image.width = 300;
   image.height = 300;
