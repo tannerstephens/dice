@@ -18,7 +18,14 @@ const callback = entries => {
 
   if(entries[0].isIntersecting === true) {
     const image = entries[0].target.children[0].children[0];
-    image.src = image.dataset.url;
+
+    const temp = new Image();
+
+    temp.onload = () => {
+      image.src = temp.src;
+    }
+
+    temp.src = image.dataset.url;
     entries[0].target.dataset.loaded = true;
   }
 };
