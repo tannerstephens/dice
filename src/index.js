@@ -79,6 +79,7 @@ const makeBoxColumn = dice => {
   image.width = 300;
   image.height = 300;
   image.dataset.url = `assets/dice/${dice}`;
+  image.src = 'assets/loading.gif';
 
   box.append(image);
   column.append(box);
