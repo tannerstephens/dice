@@ -76,8 +76,8 @@ const makeBoxColumn = dice => {
 
   const image = new Image();
   image.id = `image-${dice}`;
+  image.classList.add('is-square');
   image.width = 300;
-  image.height = 300;
   image.dataset.url = `assets/dice/${dice}`;
   image.src = 'assets/loading.gif';
 
